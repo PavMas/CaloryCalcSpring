@@ -14,8 +14,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
-public class GroupController {
-
+public class GroupController{
     private final GroupService groupService;
 
     @GetMapping("/groups")
