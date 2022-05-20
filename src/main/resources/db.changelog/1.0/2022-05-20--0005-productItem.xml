@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="2022-05-20--0005-productItem" author="pmaslov">
+        <preConditions>
+            <not>
+                <tableExists tableName="product_item"/>
+            </not>
+        </preConditions>
+        <createTable tableName="product_item">
+            <column name="id"
+                    type="NUMERIC(19,0)"
+                    autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name"
+                    type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="meal_id"
+                    type="NUMERIC(19,0)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_meal"
+                             references="meal(id)"
+                             deleteCascade="true"/>
+            </column>
+            <column name="value"
+                    type="NUMERIC(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="weight"
+                    type="NUMERIC(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

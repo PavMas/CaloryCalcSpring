@@ -1,7 +1,9 @@
 package org.example.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.domain.Meal;
 import org.example.domain.User;
+import org.example.repository.MealRepository;
 import org.example.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +14,12 @@ import java.util.List;
 public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
+    private final MealRepository mealRepository;
 
 
     @Override
-    public User insert(User user) {
+    public User insert(String name, String password) {
+        User user = User.builder().name(name).password(password).build();
         return userRepository.save(user);
     }
 
@@ -45,4 +49,10 @@ public class UserServiceImpl implements UserService{
     public void deleteById(int id) {
         userRepository.deleteById(id);
     }
+
+    @Override
+    public List<Meal> getMeals(String name) {
+        return userRepository.findByName(name).getMealList();
+    }
+
 }

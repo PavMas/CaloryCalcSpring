@@ -1,10 +1,10 @@
 package org.example.domain;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,8 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "meal")
+public class Meal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +24,12 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "password")
-    private String password;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private List<Meal> mealList;
+    @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "meal")
+    private List<ProductItem> productItems;
+
 }

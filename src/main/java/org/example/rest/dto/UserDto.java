@@ -4,7 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.domain.Meal;
 import org.example.domain.User;
+
+import java.util.List;
 
 
 @Data
@@ -16,13 +19,14 @@ public class UserDto {
     private int id;
     private String name;
     private String password;
+    private List<Meal> meals;
 
 
     public static UserDto toDto(User user){
-        return new UserDto(user.getId(), user.getName(), user.getPassword());
+        return new UserDto(user.getId(), user.getName(), user.getPassword(), user.getMealList());
     }
 
     public static User toDomainObject(UserDto userDto){
-        return new User(userDto.getId(), userDto.getName(), userDto.getPassword());
+        return new User(userDto.getId(), userDto.getName(), userDto.getPassword(), userDto.getMeals());
     }
 }

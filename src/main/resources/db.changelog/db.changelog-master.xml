@@ -8,6 +8,8 @@
     <include file="db.changelog/1.0/2022-05-08--0001-user.xml"/>
     <include file="db.changelog/1.0/2022-05-08--0002-products_group.xml"/>
     <include file="db.changelog/1.0/2022-05-08--0003-product.xml"/>
+    <include file="db.changelog/1.0/2022-05-20--0004-meal.xml"/>
+    <include file="db.changelog/1.0/2022-05-20--0005-productItem.xml"/>
 
     <include file="db.changelog/data/2022-05-08--0001-user-data.xml"/>
     <include file="db.changelog/data/2022-05-08--0002-products_group-data.xml"/>
