@@ -8,6 +8,7 @@ import org.example.domain.ProductItem;
 import org.example.domain.User;
 import org.example.rest.dto.MealDto;
 import org.example.service.MealService;
+import org.example.service.ProductItemService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,15 +19,18 @@ import java.util.stream.Collectors;
 public class MealController {
 
     private final MealService mealService;
+    private final ProductItemService productItemService;
 
     @PostMapping("/meal")
     public MealDto addMeal(@RequestBody MealResponse meal1){
         Meal meal = mealService.insert(meal1.getName(), meal1.getUid(), meal1.getList());
+        productItemService.insert(meal.getProductItems(), meal.getId());
         return MealDto.toDto(meal);
     }
     @PostMapping("/meal1")
     public MealDto addMeal1(@RequestParam String name, @RequestParam int id, @RequestParam List<ProductItem> list){
         Meal meal = mealService.insert(name, id, list);
+        productItemService.insert(list, meal.getId());
         return MealDto.toDto(meal);
     }
     @GetMapping("/user/{id}/meals")

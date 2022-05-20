@@ -10,6 +10,8 @@ public interface MealService {
 
     List<ProductItem> getAll();
 
+    Meal getById(int mealId);
+
     Meal insert(String name, int id, List<ProductItem> list);
 
     List<Meal> getByUserId(int id);

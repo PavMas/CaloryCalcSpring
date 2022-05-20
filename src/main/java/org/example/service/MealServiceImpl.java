@@ -22,6 +22,11 @@ public class MealServiceImpl implements MealService{
     }
 
     @Override
+    public Meal getById(int mealId) {
+        return mealRepository.getById(mealId);
+    }
+
+    @Override
     public Meal insert(final String name, final int id, final List<ProductItem> list) {
         User user = userRepository.findById(id);
         Meal meal = Meal.builder()

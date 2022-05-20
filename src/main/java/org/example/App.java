@@ -15,17 +15,10 @@ public class App {
 
         ConfigurableApplicationContext context = SpringApplication.run(App.class, args);
         //context.getBean(DemoService.class).UserDemo();
-/*
         try {
             Console.main(args);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
- */
-
-
-
-
     }
 }

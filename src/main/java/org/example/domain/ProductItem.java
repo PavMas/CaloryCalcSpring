@@ -28,7 +28,7 @@ public class ProductItem {
     @Column(name = "weight")
     private float weight;
 
-    @ManyToOne(targetEntity = Meal.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "meal_id")
     private Meal meal;
 
