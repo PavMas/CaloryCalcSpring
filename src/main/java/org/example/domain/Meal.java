@@ -1,9 +1,11 @@
 package org.example.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.apachecommons.CommonsLog;
 
 
 import javax.persistence.*;
@@ -24,8 +26,11 @@ public class Meal {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "total_weight")
+    private float totalWeight;
 
-    @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

@@ -20,6 +20,9 @@
             <column name="name"
                     type="VARCHAR(100)">
             </column>
+            <column name="total_weight"
+                    type="NUMERIC(19,2)">
+            </column>
             <column name="user_id"
                     type="NUMERIC(19,0)">
                 <constraints nullable="false"

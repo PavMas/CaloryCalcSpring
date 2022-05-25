@@ -19,14 +19,14 @@ public class UserDto {
     private int id;
     private String name;
     private String password;
-    private List<Meal> meals;
+
 
 
     public static UserDto toDto(User user){
-        return new UserDto(user.getId(), user.getName(), user.getPassword(), user.getMealList());
+        return new UserDto(user.getId(), user.getName(), user.getPassword());
     }
 
     public static User toDomainObject(UserDto userDto){
-        return new User(userDto.getId(), userDto.getName(), userDto.getPassword(), userDto.getMeals());
+        return new User(userDto.getId(), userDto.getName(), userDto.getPassword());
     }
 }

@@ -9,6 +9,7 @@ import org.example.domain.User;
 import org.example.rest.dto.MealDto;
 import org.example.service.MealService;
 import org.example.service.ProductItemService;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,14 +28,14 @@ public class MealController {
         productItemService.insert(meal.getProductItems(), meal.getId());
         return MealDto.toDto(meal);
     }
-    @PostMapping("/meal1")
-    public MealDto addMeal1(@RequestParam String name, @RequestParam int id, @RequestParam List<ProductItem> list){
-        Meal meal = mealService.insert(name, id, list);
-        productItemService.insert(list, meal.getId());
-        return MealDto.toDto(meal);
-    }
     @GetMapping("/user/{id}/meals")
     public List<MealDto> getMeals(@PathVariable int id){
         return mealService.getByUserId(id).stream().map(MealDto::toDto).collect(Collectors.toList());
+    }
+
+    @DeleteMapping("meal/{name}")
+    @Transactional
+    public void deleteMeal(@PathVariable String name){
+        mealService.deleteMeal(name);
     }
 }

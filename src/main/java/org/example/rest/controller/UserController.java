@@ -6,6 +6,7 @@ import org.example.domain.User;
 import org.example.rest.dto.MealDto;
 import org.example.rest.dto.UserDto;
 import org.example.service.UserService;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class UserController {
         return UserDto.toDto(user);
     }
     @GetMapping("/user/{name}")
+    @Transactional
     public UserDto getUserById(@PathVariable String name) {
 
         return UserDto.toDto(userService.getByName(name));

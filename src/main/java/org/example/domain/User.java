@@ -17,6 +17,13 @@ import java.util.List;
 @Table(name = "user")
 public class User {
 
+
+    public User(int id, String name, String password) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -26,6 +33,7 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Meal> mealList;

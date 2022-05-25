@@ -8,4 +8,5 @@ import java.util.List;
 public interface MealRepository extends JpaRepository<Meal, Integer> {
 
     List<Meal> findByUserId(int id);
+    void deleteByName(String name);
 }

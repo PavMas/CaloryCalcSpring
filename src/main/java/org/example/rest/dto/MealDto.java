@@ -21,6 +21,7 @@ public class MealDto {
     private int id;
     private String name;
     private int uid;
+    private float totalWeight;
     private List<ProductItemDto> list;
 
     public static MealDto toDto(Meal meal){
@@ -29,7 +30,7 @@ public class MealDto {
             productList1 = meal.getProductItems().stream().map(ProductItemDto::toDto).collect(Collectors.toList());
         else
             productList1 = new ArrayList<>();
-        return new MealDto(meal.getId(), meal.getName(), meal.getUser().getId(), productList1);
+        return new MealDto(meal.getId(), meal.getName(), meal.getUser().getId(), meal.getTotalWeight(), productList1);
     }
 
 }

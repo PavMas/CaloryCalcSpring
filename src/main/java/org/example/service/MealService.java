@@ -15,4 +15,6 @@ public interface MealService {
     Meal insert(String name, int id, List<ProductItem> list);
 
     List<Meal> getByUserId(int id);
+
+    void deleteMeal(String name);
 }
