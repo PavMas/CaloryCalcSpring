@@ -50,6 +50,7 @@ public class UserServiceImpl implements UserService{
         userRepository.deleteById(id);
     }
 
+
     @Override
     public List<Meal> getMeals(String name) {
         return userRepository.findByName(name).getMealList();

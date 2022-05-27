@@ -6,6 +6,7 @@ import org.example.domain.User;
 import org.example.rest.dto.MealDto;
 import org.example.rest.dto.UserDto;
 import org.example.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserController {
 
+    @Autowired
     public final UserService userService;
 
     @GetMapping("/user")
@@ -38,13 +40,10 @@ public class UserController {
         return UserDto.toDto(userService.getByName(name));
     }
 
-    /*
-    @GetMapping("/user/{name}/meals")
-    public List<MealDto> getMeals(@PathVariable String name){
-        return userService.getMeals(name).stream().map(MealDto::toDto).collect(Collectors.toList());
+    @DeleteMapping("/user/{id}")
+    @Transactional
+    public void deleteUserByName(@PathVariable int id) {
+        userService.deleteById(id);
     }
-
-     */
-
 
 }
